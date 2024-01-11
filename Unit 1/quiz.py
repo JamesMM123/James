@@ -100,3 +100,5 @@ elif percentscore == 20:
     print("How do you only get one right?! That was a bad attempt not going to lie.")
 elif percentscore == 0:
     print("I hate to be rude but either you failed on purpose or you're really stupid.")
+
+print("Hello")
