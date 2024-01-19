@@ -16,18 +16,18 @@ print()
 def bodypart(g):
     print('     ------')
     print('     |       ' + ('|' if guesses <= 6 else ''))
-    print('     |       ' + ('0' if guesses <= 5 else ''))
-    print('     |       ' + ('/\\' if guesses <= 4 else ''))
-    print('     |       ' + ('|' if  guesses <=3 else '' ))
-    print('     |       ' + ('|' if guesses <= 2 else ''))
-    print('     |       ' + ('/\\' if guesses <=1 else ''))
-    print(' --------')
+    print('     |       ' + ('O' if guesses <= 5 else ''))
+    print('     |      ' +(' /\\' if guesses <= 4 else ''))
+    print('     |        ' + ('|' if  guesses <=3 else '' ))
+    print('     |        ' + ('|' if guesses <= 2 else ''))
+    print('     |      '+('/\\' if guesses <=1 else ''))
+    print(' --------   ')
     
 
 
 
 #List of Words
-word_selection = ["Python","Array","Loops","Binary","Programming","Program","String","Print", "If/Elif/Else", "HTML", "Javascript", "Computer", "Code", "Language","Keyboard","Mouse","Moniter", "Technology","Variable","Input","Float","Statement","Error","Output","Debug","Terminal","Source","Robot","Artificial","Ethernet","Internet","Router","Graphics","Function","Import","Export","Conditions","Index","Tuples","Operators","Booleans","Comments","Modules","Analyitics","Syntax","List","Information","Extensions","Control","Server", ]
+word_selection = ["PYTHON","ARRAY","LOOPS","BINARY","PROGRAM","PROGRAMMING","STRING","PRINT", "HTML", "JAVASCRIPT", "COMPUTER", "CODE", "LANGUAGE","KEYBOARD","MOUSE","MONITER", "TECHNOLOGY","VARIABLE","INPUT","FLOAT","STATMENT","ERROR","OUTPUT","DEBUG","TERINAL","SOURCE","ROBOT","ARTIFICIAL","ETHERENET","INTERNET","ROUTER","GRAPHICS","FUNCTION","IMPORT","EXPORT","CONDITIONS","INDEX","TUUPLES","OPERATORS","BOOLEANS","COMMENTS","MODULES","ANALYITICS","SYNTAX","LIST","INFORMATION","EXTENTIONS","CONTROL","SERVER",]
 
 
 while replay == "yes":
@@ -61,8 +61,15 @@ while replay == "yes":
 
 
     while guessing == "yes":
+        if visible_word == word:
+            game = "end"
+            break
+        elif guesses == 0:
+            game = 'end'
+            break
         print(visible_word)
         print("Answer \"letter\" or \"word\"")
+        bodypart(guesses)
         choice_uno = input("Guess a letter or Guess the full word? ")
         if choice_uno == "letter" or choice_uno == "Letter":
             choice_letter = input("What letter would you like to guess? ")
@@ -74,6 +81,11 @@ while replay == "yes":
                     if character == choice_letter:
                         visible_word[i] = word[i]
                         word[i] = "_"
+            elif choice_letter not in word:
+                print("You guessed Incorrectly! \""+str(choice_letter)+"\" Is not in the word!")
+                guesses -= 1
+                print("That's a guess lost! You have "+str(guesses)+" left! Uh oh!")
+                continue
             
 
         
@@ -84,10 +96,9 @@ while replay == "yes":
                 game = "won"
                 break
             else:
-                print("Incorrect Your lost 1 guess")
+                print("You guessed Incorrectly! \""+str(choice_letter)+"\" Is not in the word!")
                 guesses -= 1
-                print("You now have "+str(guesses)+" left!")
-                bodypart(guesses)
+                print("That's a guess lost! You have "+str(guesses)+" left! Uh oh!")
                 continue
                
                 
