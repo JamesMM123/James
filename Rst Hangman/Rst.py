@@ -14,24 +14,16 @@ print("Please answer with the full word when guessing the word")
 print()
 
 def bodypart(g):
-    if g == 5:
-        print("The head is drawn")
-
-    elif g == 4:
-        print("The Body is drawn ")
-    elif g == 3:
-        print("The Left Leg is drawn")
-
-    elif g == 2:
-        print("The Right Leg is drawn")
-
-    elif g == 1:
-        print("The Left Arm is drawn")
-
-    elif g == 0:
-        print("The Right Arm is drawn")
-        winner = "lost"
+    print('     ------')
+    print('     |       ' + ('|' if guesses <= 6 else ''))
+    print('     |       ' + ('0' if guesses <= 5 else ''))
+    print('     |       ' + ('/\\' if guesses <= 4 else ''))
+    print('     |       ' + ('|' if  guesses <=3 else '' ))
+    print('     |       ' + ('|' if guesses <= 2 else ''))
+    print('     |       ' + ('/\\' if guesses <=1 else ''))
+    print(' --------')
     
+
 
 
 #List of Words
@@ -58,31 +50,36 @@ while replay == "yes":
         else:
             print("Please answer with Yes or No...")
             print()
+            
     print("The computer is deciding what word for you to guess!")
     print("The computer has decided!")
-    choice = random.choice(word_selection)
-    x = len(choice)
-    y = "_ "
+
+    word = list(random.choice(word_selection))
+    visible_word = []
+    for character in word:
+        visible_word.append('_')
+
 
     while guessing == "yes":
-        print(str(y * x))
-        print("The word has "+str(x)+" letters unguessed.")
+        print(visible_word)
         print("Answer \"letter\" or \"word\"")
         choice_uno = input("Guess a letter or Guess the full word? ")
         if choice_uno == "letter" or choice_uno == "Letter":
             choice_letter = input("What letter would you like to guess? ")
-            if choice_letter in choice:
-                print("You guessed correctly!")
-                for choice_letter in choice:
-                    choice.find(choice_letter)
-                    choice.replace(choice_letter, '')
-                
+            choice_letter = choice_letter.upper()
+            if choice_letter in word:
+                print("You guessed correctly! \""+str(choice_letter)+"\" Is in the word!")
+                for i in range( len(word) ):
+                    character = word[i]
+                    if character == choice_letter:
+                        visible_word[i] = word[i]
+                        word[i] = "_"
             
 
         
         elif choice_uno == "word" or choice_uno == "Word":
             choice_word = input("Type out the word you'd like to guess! ")
-            if choice_word == choice:
+            if choice_word == word:
                 print("You Guessed The Word! You still had "+str(guesses)+"left")
                 game = "won"
                 break
