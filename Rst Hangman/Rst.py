@@ -58,9 +58,6 @@ print("The computer has decided!")
 print()
 
 word = list(random.choice(word_selection))
-ex_word = []
-ex_word.append(word)
-print(ex_word)
 visible_word = []
 for character in word:
     visible_word.append('_')
