@@ -6,6 +6,7 @@ guessing = "yes"
 guesses = 6
 winner = "undecided"
 try_again = "y"
+word_guessed = "b"
 print("Computer Programming Hangman!")
 
 
@@ -54,19 +55,29 @@ while game == "x":
             
 print("The computer is deciding what word for you to guess!")
 print("The computer has decided!")
+print()
 
 word = list(random.choice(word_selection))
+ex_word = []
+ex_word.append(word)
+print(ex_word)
 visible_word = []
 for character in word:
     visible_word.append('_')
 
 
 while guessing == "yes":
-    if visible_word == word:
+    if  word_guessed == "yes":
         guessing = "end"
+        winner = "won"
         break
     elif guesses == 0:
         guessing = 'end'
+        winner = "lost"
+        break
+    elif word == visible_word:
+        guessing = "end"
+        winner = "won"
         break
     print(visible_word)
     print("Answer \"letter\" or \"word\"")
@@ -93,11 +104,15 @@ while guessing == "yes":
     elif choice_uno == "word" or choice_uno == "Word":
         choice_word = input("Type out the word you'd like to guess! ")
         choice_word = choice_word.upper()
-        if choice_word == word:
+        if choice_word ==  ex_word:
             print("You Guessed The Word! You still had "+str(guesses)+"left")
+            print()
             guessing = "won"
+            winner = "won"
+            word_guessed = "yes"
+
             break
-        elif choice_word != word:
+        elif choice_word != ex_word:
             print("You guessed Incorrectly! \""+str(choice_word)+"\" Is not the word!")
             guesses -= 1
             print("That's a guess lost! You have "+str(guesses)+" left! Uh oh!")
@@ -113,15 +128,11 @@ while guessing == "yes":
 
 
 if winner == "lost":
-    try_again = input("You lost would you like to try again")
-    if try_again == "yes" or try_again == "Yes" or try_again == "y" or try_again == "yer":
-        print("a")
-    elif try_again == "no" or try_again == "No" or try_again == "n" or try_again == "Nuh uh" or try_again == "nuh uh":
-        print("Okkie Dokkie")
+    print("Oh you lost! Too bad... You may not have have won but were proud of unlike your father")
+    print("The word was"+str(word))
+    
 
 elif winner == "won":
-    try_again == input("Wow! You won would you like to try again?")
-    if try_again == "yes" or try_again == "Yes" or try_again == "y" or try_again == "Y" or try_again == "yer" or try_again == "yer":
-        print("b")
-    elif try_again == "no" or try_again == "No" or try_again == "n" or try_again == "Nuh uh" or try_again == "nuh uh":
-        print("Okey Dookie")
+    print("Oh wow! you guessed the word! Congratulations are in order go tell your friends that you won hangman good job.")
+    print("The word was"+ str(word))
+    
