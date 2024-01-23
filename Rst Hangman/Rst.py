@@ -104,7 +104,7 @@ while guessing == "yes":
         choice_word = input("Type out the word you'd like to guess! ")
         choice_word = choice_word.upper()
         if choice_word == ex_word:
-            print("You Guessed The Word! You still had "+str(guesses)+"left")
+            print("You Guessed The Word! You still had "+str(guesses)+" guesses left")
             print()
             guessing = "won"
             winner = "won"
@@ -132,6 +132,6 @@ if winner == "lost":
     
 
 elif winner == "won":
-    print("Oh wow! you guessed the word! Congratulations are in order go tell your friends that you won hangman good job.")
+    print("Oh wow! you guessed the word! Congratulations are in order! Go tell your friends that you won hangman, good job.")
     print("The word was"+ str(ex_word))
     
