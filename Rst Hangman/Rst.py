@@ -59,6 +59,9 @@ print()
 
 word = list(random.choice(word_selection))
 visible_word = []
+ex_word = "".join(word)
+print(ex_word)
+
 for character in word:
     visible_word.append('_')
 
@@ -101,7 +104,7 @@ while guessing == "yes":
     elif choice_uno == "word" or choice_uno == "Word":
         choice_word = input("Type out the word you'd like to guess! ")
         choice_word = choice_word.upper()
-        if choice_word ==  ex_word:
+        if choice_word == ex_word:
             print("You Guessed The Word! You still had "+str(guesses)+"left")
             print()
             guessing = "won"
@@ -125,11 +128,11 @@ while guessing == "yes":
 
 
 if winner == "lost":
-    print("Oh you lost! Too bad... You may not have have won but were proud of unlike your father")
-    print("The word was"+str(word))
+    print("Oh you lost! Too bad... You may not have have won but were proud you tried.")
+    print("The word was"+str(ex_word))
     
 
 elif winner == "won":
     print("Oh wow! you guessed the word! Congratulations are in order go tell your friends that you won hangman good job.")
-    print("The word was"+ str(word))
+    print("The word was"+ str(ex_word))
     
