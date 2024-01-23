@@ -60,7 +60,6 @@ print()
 word = list(random.choice(word_selection))
 visible_word = []
 ex_word = "".join(word)
-print(ex_word)
 
 for character in word:
     visible_word.append('_')
