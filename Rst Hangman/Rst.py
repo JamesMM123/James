@@ -127,11 +127,11 @@ while guessing == "yes":
 
 
 if winner == "lost":
-    print("Oh you lost! Too bad... You may not have have won but were proud you tried.")
-    print("The word was"+str(ex_word))
+    print("Oh you lost! Too bad... You may not have have won but we're proud you tried.")
+    print("The word was "+str(ex_word))
     
 
 elif winner == "won":
     print("Oh wow! you guessed the word! Congratulations are in order! Go tell your friends that you won hangman, good job.")
-    print("The word was"+ str(ex_word))
+    print("The word was "+ str(ex_word))
     
